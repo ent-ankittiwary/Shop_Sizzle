@@ -11,15 +11,20 @@ export const metadata = {
   description: "GoCart. - Shop smarter",
 };
 
+  const imageKitUrlEndpoint = process.env.IMAGEKIT_URL_ENDPOINT;
+
+
 export default function RootLayout({ children }) {
   return (
     <ClerkProvider>
       <html lang="en">
         <body className={`${outfit.className} antialiased`}>
+           <ImageKitProvider urlEndpoint={imageKitUrlEndpoint ?? ""}>
           <StoreProvider>
             <Toaster />
             {children}
           </StoreProvider>
+          </ImageKitProvider>
         </body>
       </html>
     </ClerkProvider>
